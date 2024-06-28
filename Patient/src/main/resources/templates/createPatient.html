@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<main class="container">
+    <div class="my-3 row">
+        <div class="col-8 offset-2 p-3 rounded text-bg-dark">
+            <h1 class="fw-light text-center">Créer un patient </h1>
+            <hr>
+            <form  th:action="@{/patients}" th:object="${patient}" method="post">
+                <input th:field="*{id}" type="hidden">
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom :</label>
+                    <input th:field="*{nom}" type="text" class="form-control" id="nom">
+                    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom :</label>
+                    <input th:field="*{prenom}" type="text" class="form-control" id="prenom">
+                    <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="dateNaissance" class="form-label">Date de naissance :</label>
+                    <input type="text" id="dateNaissance" class="form-control" name="dateNaissance">
+                </div>
+                <hr>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">
+                       Ajouter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<main class="container">
+    <div class="my-3 row">
+        <div class="col-8 offset-2 p-3 rounded text-bg-dark">
+            <h1 class="fw-light text-center">Créer une consultation</h1>
+            <hr>
+            <form th:action="@{/patients/{id}/consultations(id=${patientId})}" th:object="${consultation}" method="post">
+                <input th:field="*{id}" type="hidden">
+                <div class="mb-3">
+                    <label for="dateConsultation" class="form-label">Date de consultation :</label>
+                    <input type="text" id="dateConsultation" class="form-control" name="dateConsultation">
+                </div>
+                <div class="mb-3">
+                    <label for="rapport" class="form-label">Rapport :</label>
+                    <textarea th:field="*{rapport}" id="rapport" class="form-control"></textarea>
+                </div>
+                <hr>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
